@@ -75,12 +75,12 @@ JObject rmTag = oaClient.removeTag("test");
 ```
 
 **Lấy thông tin người theo dõi**
-```C#
+```
 JObject profile = oaClient.getProfile(userId);
 ```
 
 **Gửi tin nhắn text**
-```C#
+```
 JObject sendTextMessage = oaClient.sendTextMessage(userId, "test message");
 ```
 
