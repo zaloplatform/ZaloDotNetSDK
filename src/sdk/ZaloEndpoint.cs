@@ -51,6 +51,21 @@ namespace ZaloCSharpSDK
         public static string GET_ORDER_ENDPOINT = getEndpoint("/store/order/getorder");
         public static string UPDATE_SHOP_ENDPOINT = getEndpoint("/store/updateshop");
 
+        // ARTICLE API ENDPOINT
+        public static string GET_SLICE_VIDEO_MEDIA_ENDPOINT = getEndpoint("/media/video/getslice");
+        public static string UPDATE_VIDEO_MEDIA_ENDPOINT = getEndpoint("/media/video/update");
+        public static string CREATE_VIDEO_MEDIA_ENDPOINT = getEndpoint("/media/video/create");
+        public static string CREATE_MEDIA_ENDPOINT = getEndpoint("/media/create");
+        public static string VERIFY_MEDIA_ENDPOINT = getEndpoint("/media/verify");
+        public static string UPDATE_MEDIA_ENDPOINT = getEndpoint("/media/update");
+        public static string REMOVE_MEDIA_ENDPOINT = getEndpoint("/media/remove");
+        public static string GET_SLICE_MEDIA_ENDPOINT = getEndpoint("/media/getslice");
+        public static string BROADCAST_MEDIA_ENDPOINT = getEndpoint("/broadcast/medias");
+        public static string GET_UPLOAD_LINK_ENDPOINT = getEndpoint("/media/upload/video");
+        public static string GET_MEDIA_VIDEO_ID_ENDPOINT = getEndpoint("/media/getvideoid");
+        public static string GET_MEDIA_VIDEO_STATUS_ENDPOINT = getEndpoint("/media/getvideostatus");
+
+
         private static string getEndpoint(string url)
         {
             return String.Format("{0}/{1}/{2}", APIConfig.DEFAULT_OA_API_BASE, APIConfig.DEFAULT_OA_API_VERSION, url);

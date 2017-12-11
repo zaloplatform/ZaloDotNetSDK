@@ -12,9 +12,22 @@ namespace ZaloCSharpSDK
 
         private ZaloOaInfo _oaInfo;
 
+        public ZaloOaInfo OaInfo
+        {
+            get
+            {
+                return _oaInfo;
+            }
+
+            set
+            {
+                _oaInfo = value;
+            }
+        }
+
         public ZaloStoreClient(ZaloOaInfo oaInfo)
         {
-            _oaInfo = oaInfo;
+            OaInfo = oaInfo;
         }
 
         public JObject updateVariation(Variation variation)
@@ -26,7 +39,7 @@ namespace ZaloCSharpSDK
                     variation = variation
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.UPDATE_VARIATION_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -41,7 +54,7 @@ namespace ZaloCSharpSDK
                     variations = variations
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.ADD_VARIATION_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -55,7 +68,7 @@ namespace ZaloCSharpSDK
                     attributeids = attributeids
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpGetRequest(ZaloEndpoint.GET_ATTR_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -70,7 +83,7 @@ namespace ZaloCSharpSDK
                     count = count
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpGetRequest(ZaloEndpoint.GET_ATTR_OF_OA_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -85,7 +98,7 @@ namespace ZaloCSharpSDK
                     attributeid = attributeid
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.UPDATE_ATTR_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -100,7 +113,7 @@ namespace ZaloCSharpSDK
                     type = type
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.CREATE_ATTR_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -115,7 +128,7 @@ namespace ZaloCSharpSDK
                     count = count
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpGetRequest(ZaloEndpoint.GET_ATTR_TYPE_OF_OA_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -126,14 +139,14 @@ namespace ZaloCSharpSDK
             {
                 data = product
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.CREATE_PRODUCT_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
 
         public JObject uploadProductPhoto(string pathToFile)
         {
-            Dictionary<string, string> param = createParam(_oaInfo, new JObject());
+            Dictionary<string, string> param = createParam(OaInfo, new JObject());
             string response = sendHttpUploadRequest(ZaloEndpoint.UPLOAD_PRODUCT_PHOTO_ENDPOINT, pathToFile, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -148,7 +161,7 @@ namespace ZaloCSharpSDK
                     product = product
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.UPDATE_PRODUCT_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -159,7 +172,7 @@ namespace ZaloCSharpSDK
             {
                 productid = productid
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.REMOVE_PRODUCT_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -173,7 +186,7 @@ namespace ZaloCSharpSDK
                     productid = productid
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpGetRequest(ZaloEndpoint.GET_PRODUCT_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -188,7 +201,7 @@ namespace ZaloCSharpSDK
                     count = count
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpGetRequest(ZaloEndpoint.GET_PRODUCT_OF_OA_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -199,7 +212,7 @@ namespace ZaloCSharpSDK
             {
                 data = category
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.CREATE_CATEGORY_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -214,7 +227,7 @@ namespace ZaloCSharpSDK
                     category = category
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.UPDATE_CATEGORY_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -229,14 +242,14 @@ namespace ZaloCSharpSDK
                     count = count
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpGetRequest(ZaloEndpoint.GET_CATEGORY_OF_OA_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
 
         public JObject uploadCategoryPhoto(string pathToFile)
         {
-            Dictionary<string, string> param = createParam(_oaInfo, new JObject());
+            Dictionary<string, string> param = createParam(OaInfo, new JObject());
             string response = sendHttpUploadRequest(ZaloEndpoint.UPLOAD_CATEGORY_PHOTO, pathToFile, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -247,7 +260,7 @@ namespace ZaloCSharpSDK
             {
                 data = order
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.UPDATE_ORDER_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -263,7 +276,7 @@ namespace ZaloCSharpSDK
                     filter = filter
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpGetRequest(ZaloEndpoint.GET_ORDER_OF_OA_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -274,7 +287,7 @@ namespace ZaloCSharpSDK
             {
                 orderid = orderid
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpGetRequest(ZaloEndpoint.GET_ORDER_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
@@ -291,7 +304,7 @@ namespace ZaloCSharpSDK
                     }
                 }
             });
-            Dictionary<string, string> param = createParam(_oaInfo, data);
+            Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.UPDATE_SHOP_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
