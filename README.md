@@ -144,17 +144,17 @@ JObject sendActionMessage = oaClient.sendActionMessage(userId, new List<MsgActio
 
 **Gửi tin nhắn Sticker**
 ```
-JObject sendStickerMessage = oaClient.sendStickerMessage(userId, "");
+JObject sendStickerMessage = oaClient.sendStickerMessage(userId, stickerId);
 ```
 
 **Trả lời tin nhắn dạng text**
 ```
-JObject replyTextMessage = oaClient.replyTextMessage("", "test message");
+JObject replyTextMessage = oaClient.replyTextMessage(messageId, "test message");
 ```
 
 **Trả lời tin nhắn dạng hình**
 ```
-JObject replyImageMessage = oaClient.replyImageMessage("", "", "test message");
+JObject replyImageMessage = oaClient.replyImageMessage(messageId, imageId, "test message");
 ```
 
 **Trả lời tin nhắn dạng liên kết**
@@ -170,13 +170,12 @@ secondLink.link = "put_url_here";
 secondLink.linktitle = "put_title_here";
 secondLink.linkdes = "put_description_here";
 secondLink.linkthumb = "put_thumbnail_url_here";
-JObject sendLinksMessage = oaClient.sendLinksMessage(userId, new List<MsgLink>() { firstLink, secondLink });
-JObject replyLinksMessage = oaClient.replyLinksMessage("", new List<MsgLink>() { firstLink, secondLink });
+JObject replyLinksMessage = oaClient.replyLinksMessage(messageId, new List<MsgLink>() { firstLink, secondLink });
 ```
 
 **Tạo QR Code**
 ```
-JObject createQRcode = oaClient.createQRcode("", 10);
+JObject createQRcode = oaClient.createQRcode(qrdata, 10);
 ```
 
 ## Store API
