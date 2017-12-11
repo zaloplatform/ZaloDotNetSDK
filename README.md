@@ -28,17 +28,17 @@ JObject token = appClient.getAccessToken(code);
 
 **Thông tin người dùng**
 ```
-JObject profile = appClient.getProfile(accessToken, "id, name, birthday, gender, picture");
+JObject profile = appClient.getProfile(accessToken, "fields");
 ```
 
 **Lấy danh sách tất cả bạn bè của người dùng đã sử dụng ứng dụng**
 ```
-JObject friends = appClient.getFriends(accessToken, 0, 10, "id, name, birthday, gender, picture");
+JObject friends = appClient.getFriends(accessToken, 0, 10, "fields");
 ```
 
 **Lấy danh sách bạn bè chưa sử dụng ứng dụng và có thể nhắn tin mời sử dụng ứng dụng**
 ```
-JObject invitableFriends = appClient.getInvitableFriends(accessToken, 0, 10, "id, name, birthday, gender, picture");
+JObject invitableFriends = appClient.getInvitableFriends(accessToken, 0, 10, "fields");
 ```
 
 **Đăng bài viết**
@@ -100,7 +100,7 @@ JObject uploadGif = oaClient.uploadGif(pathToGif);
 ```
 
 **Gửi tin nhắn hình**
-```C#
+```
 JObject sendImageMessage = oaClient.sendImageMessage(userId, imageId, "test message");
 ```
 
@@ -326,6 +326,127 @@ JObject getOrder = storeClient.getOrder(orderId);
 **Thiết lập cửa hàng**
 ```
 JObject updateShop = storeClient.updateShop(1);
+```
+
+## Article API
+**Tạo bài viết**
+```
+Cover cover = new Cover();
+cover.coverType = 1; // 0 (photo) | 1 (video);
+cover.coverView = 1; // 1 (horizontal), 2 (vertical), 3 (square)
+cover.videoId = "b0a710f62cb3c5ed9ca2";
+cover.status = "show";
+
+ActionLink actionLink = new ActionLink();
+actionLink.type = 2; // 0 (link to web), 1 (link to image), 2 (link to video), 3 (link to audio)
+actionLink.label = "put_label_here";
+actionLink.url = "https://www.youtube.com/watch?v=jp3xBWgii8A&list=RDjp3xBWgii8A";
+
+MediaBody paragraphText = new MediaBody();
+paragraphText.type = 0;
+paragraphText.content = "put_content_here";
+
+MediaBody paragraphImage = new MediaBody();
+paragraphImage.type = 1;
+paragraphImage.url = "https://upload.wikimedia.org/wikipedia/commons/7/71/2010-kodiak-bear-1.jpg";
+paragraphImage.caption = "put_caption_here";
+paragraphImage.width = 500;
+paragraphImage.height = 300;
+
+MediaBody paragraphVideo = new MediaBody();
+paragraphVideo.type = 3;
+paragraphVideo.url = "https://www.youtube.com/watch?v=jp3xBWgii8A&list=RDjp3xBWgii8A";
+paragraphVideo.category = "youtube";
+paragraphVideo.caption = "put_caption_here";
+
+Media media = new Media();
+media.title = "put_title_here";
+media.author = "put_author_here";
+media.cover = cover;
+media.desc = "put_description_here";
+media.actionLink = actionLink;
+media.body = new List<MediaBody>() { paragraphText, paragraphImage, paragraphVideo };
+media.status = "show";
+
+JObject createMedia = articleClient.createMedia(media);
+```
+
+**Lấy Id của bài viết**
+```
+JObject verifyMedia = articleClient.verifyMedia(token);
+```
+
+**Chỉnh sửa bài viết**
+```
+Cover cover = new Cover();
+cover.coverType = 1; // 0 (photo) | 1 (video);
+cover.coverView = 1; // 1 (horizontal), 2 (vertical), 3 (square)
+cover.videoId = "b0a710f62cb3c5ed9ca2";
+cover.status = "show";
+
+ActionLink actionLink = new ActionLink();
+actionLink.type = 2; // 0 (link to web), 1 (link to image), 2 (link to video), 3 (link to audio)
+actionLink.label = "put_label_here";
+actionLink.url = "https://www.youtube.com/watch?v=jp3xBWgii8A&list=RDjp3xBWgii8A";
+
+MediaBody paragraphText = new MediaBody();
+paragraphText.type = 0;
+paragraphText.content = "put_content_here";
+
+MediaBody paragraphImage = new MediaBody();
+paragraphImage.type = 1;
+paragraphImage.url = "https://upload.wikimedia.org/wikipedia/commons/7/71/2010-kodiak-bear-1.jpg";
+paragraphImage.caption = "put_caption_here";
+paragraphImage.width = 500;
+paragraphImage.height = 300;
+
+MediaBody paragraphVideo = new MediaBody();
+paragraphVideo.type = 3;
+paragraphVideo.url = "https://www.youtube.com/watch?v=jp3xBWgii8A&list=RDjp3xBWgii8A";
+paragraphVideo.category = "youtube";
+paragraphVideo.caption = "put_caption_here";
+
+Media media = new Media();
+media.title = "put_title_here";
+media.author = "put_author_here";
+media.cover = cover;
+media.desc = "put_description_here";
+media.actionLink = actionLink;
+media.body = new List<MediaBody>() { paragraphText, paragraphImage, paragraphVideo };
+media.status = "show";
+
+JObject updateMedia = articleClient.updateMedia(mediaId, media);
+```
+
+**Xóa bài viết**
+```
+JObject removeMedia = articleClient.removeMedia(mediaId);
+```
+
+**Lấy danh sách bài viết**
+```
+JObject getSliceMedia = articleClient.getSliceMedia(0, 10);
+```
+
+**Upload video cho bài viết**
+```
+# Step 1 - Lấy link upload
+JObject getUploadLink = articleClient.getUploadLink(videoName, videoSize);
+
+# Step 2 - Upload file và lấy token
+string appId = getUploadLink["data"]["appId"].ToString();
+string uploadLink = getUploadLink["data"]["uploadLink"].ToString();
+long timestamp = (long)getUploadLink["data"]["time"];
+string sig = getUploadLink["data"]["sig"].ToString();
+
+JObject uploadVideo = articleClient.uploadVideo(uploadLink, appId, pathToVideo, timestamp, sig);
+
+# Step 3 - Lấy id của video
+string token = uploadVideo["data"]["token"].ToString();
+JObject getVideoId = articleClient.getVideoId(token, videoName, videoSize, timestamp, sig);
+
+# step 4 - Kiểm tra trạng thái của video
+JObject getVideoStatus = articleClient.getVideoStatus(videoId);
 ```
 
 ## Authors
