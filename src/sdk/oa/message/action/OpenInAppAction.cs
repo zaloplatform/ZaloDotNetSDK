@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,34 +9,33 @@ namespace ZaloCSharpSDK
 {
     public class OpenInAppAction : MsgAction
     {
-        private string _url;
+        private string _data;
+        private string _action = "oa.open.inapp";
 
-        public string url
+        public string action
         {
             get
             {
-                return _url;
+                return _action;
             }
 
             set
             {
-                _url = value;
+                _action = value;
             }
         }
 
-        public override string getAction()
+        public string data
         {
-            return "oa.open.inapp";
-        }
+            get
+            {
+                return _data;
+            }
 
-        public override string getHref()
-        {
-            return null;
-        }
-
-        public override Object getData()
-        {
-            return url;
+            set
+            {
+                _data = value;
+            }
         }
     }
 }

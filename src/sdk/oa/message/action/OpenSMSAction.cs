@@ -9,51 +9,33 @@ namespace ZaloCSharpSDK
 {
     public class OpenSMSAction : MsgAction
     {
-        private string _content;
-        private string _phoneCode;
+        private JObject _data;
+        private string _action = "oa.open.sms";
 
-        public string content
+        public string action
         {
             get
             {
-                return _content;
+                return _action;
             }
 
             set
             {
-                _content = value;
+                _action = value;
             }
         }
 
-        public string phoneCode
+        public JObject data
         {
             get
             {
-                return _phoneCode;
+                return _data;
             }
 
             set
             {
-                _phoneCode = value;
+                _data = value;
             }
-        }
-
-        public override string getAction()
-        {
-            return "oa.open.sms";
-        }
-
-        public override string getHref()
-        {
-            return null;
-        }
-
-        public override Object getData()
-        {
-            JObject obj = new JObject();
-            obj.Add("content", _content);
-            obj.Add("phoneCode", _phoneCode);
-            return obj;
         }
     }
 }

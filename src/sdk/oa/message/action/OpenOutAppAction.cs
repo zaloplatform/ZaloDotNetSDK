@@ -8,34 +8,33 @@ namespace ZaloCSharpSDK
 {
     class OpenOutAppAction : MsgAction
     {
-        private string _url;
+        private string _data;
+        private string _action = "oa.open.outapp";
 
-        public string url
+        public string action
         {
             get
             {
-                return _url;
+                return _action;
             }
 
             set
             {
-                _url = value;
+                _action = value;
             }
         }
 
-        public override string getAction()
+        public string data
         {
-            return "oa.open.outapp";
-        }
+            get
+            {
+                return _data;
+            }
 
-        public override string getHref()
-        {
-            return null;
-        }
-
-        public override Object getData()
-        {
-            return url;
+            set
+            {
+                _data = value;
+            }
         }
     }
 }

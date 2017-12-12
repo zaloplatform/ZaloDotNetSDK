@@ -9,36 +9,33 @@ namespace ZaloCSharpSDK
 {
     public class OpenCallAction : MsgAction
     {
-        private string _phoneCode;
+        private JObject _data;
+        private string _action = "oa.open.phone";
 
-        public string phoneCode
+        public string action
         {
             get
             {
-                return _phoneCode;
+                return _action;
             }
 
             set
             {
-                _phoneCode = value;
+                _action = value;
             }
         }
 
-        public override string getAction()
+        public JObject data
         {
-            return "oa.open.phone";
-        }
+            get
+            {
+                return _data;
+            }
 
-        public override string getHref()
-        {
-            return null;
-        }
-
-        public override Object getData()
-        {
-            JObject obj = new JObject();
-            obj.Add("phoneCode", _phoneCode);
-            return obj;
+            set
+            {
+                _data = value;
+            }
         }
     }
 }

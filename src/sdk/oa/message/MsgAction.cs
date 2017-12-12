@@ -13,12 +13,7 @@ namespace ZaloCSharpSDK
         private string _description;
         private string _thumb;
         private JObject _popup;
-
-        public abstract string getAction();
-
-        public abstract string getHref();
-
-        public abstract Object getData();
+        private string _href;
 
         public string title
         {
@@ -69,6 +64,19 @@ namespace ZaloCSharpSDK
             set
             {
                 _popup = value;
+            }
+        }
+
+        public string href
+        {
+            get
+            {
+                return _href;
+            }
+
+            set
+            {
+                _href = value;
             }
         }
     }

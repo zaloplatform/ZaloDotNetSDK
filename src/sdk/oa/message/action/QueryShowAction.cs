@@ -9,6 +9,7 @@ namespace ZaloCSharpSDK
     class QueryShowAction : MsgAction
     {
         private string _data;
+        private string _action = "oa.query.show";
 
         public string data
         {
@@ -23,19 +24,17 @@ namespace ZaloCSharpSDK
             }
         }
 
-        public override string getAction()
+        public string action
         {
-            return "oa.query.show";
-        }
+            get
+            {
+                return _action;
+            }
 
-        public override String getHref()
-        {
-            return null;
-        }
-
-        public override Object getData()
-        {
-            return data;
+            set
+            {
+                _action = value;
+            }
         }
     }
 }
