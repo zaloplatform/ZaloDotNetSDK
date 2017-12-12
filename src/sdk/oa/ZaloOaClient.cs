@@ -170,7 +170,6 @@ namespace ZaloCSharpSDK
                     actionlist = actionList
                 }
             });
-            Console.WriteLine(data);
             Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.SEND_ACTION_MESSAGE_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
