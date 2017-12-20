@@ -139,6 +139,7 @@ namespace ZaloCSharpSDK
             {
                 data = product
             });
+            Console.WriteLine(data);
             Dictionary<string, string> param = createParam(OaInfo, data);
             string response = sendHttpPostRequest(ZaloEndpoint.CREATE_PRODUCT_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);

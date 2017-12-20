@@ -235,6 +235,7 @@ product.name = "test product";
 product.desc = "a new product";
 product.code = "1234";
 product.price = 3;
+product.cateids = new List<JObject>() { JObject.FromObject(new { cateid = categoryId }) };
 product.photos = new List<JObject>() { JObject.FromObject(new { id = photoId }) };
 product.display = "show";
 product.payment = 2;

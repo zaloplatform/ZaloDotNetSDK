@@ -9,7 +9,7 @@ namespace ZaloCSharpSDK
 {
     public class Product
     {
-        private List<string> _cateids;
+        private List<JObject> _cateids;
         private string _name;
         private string _desc;
         private string _code;
@@ -18,7 +18,7 @@ namespace ZaloCSharpSDK
         private string _display;
         private int _payment;
 
-        public List<string> cateids
+        public List<JObject> cateids
         {
             get
             {
