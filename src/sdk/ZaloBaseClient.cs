@@ -10,6 +10,8 @@ namespace ZaloCSharpSDK {
     public class ZaloBaseClient {
         private static readonly DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
+        public bool isDebug = false;
+
         protected string sendHttpGetRequest(string endpoint, Dictionary<string, string> param, Dictionary<string, string> header) {
             UriBuilder builder = new UriBuilder(endpoint);
             var query = HttpUtility.ParseQueryString(builder.Query);
@@ -26,18 +28,34 @@ namespace ZaloCSharpSDK {
                     httpClient.DefaultRequestHeaders.Add(entry.Key, entry.Value);
                 }
             }
-
+            if (isDebug)
+            {
+                Console.WriteLine("GET: "+ builder.ToString());
+            }
             return httpClient.GetStringAsync(builder.ToString()).Result;
         }
 
         protected string sendHttpPostRequest(string endpoint, Dictionary<string, string> param, Dictionary<string, string> header) {
             FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(param);
-
             HttpClient httpClient = new HttpClient();
             if (header != null) {
                 foreach (KeyValuePair<string, string> entry in header) {
                     httpClient.DefaultRequestHeaders.Add(entry.Key, entry.Value);
                 }
+            }
+            if (isDebug)
+            {
+                UriBuilder builder = new UriBuilder(endpoint);
+                var query = HttpUtility.ParseQueryString(builder.Query);
+                if (param != null)
+                {
+                    foreach (KeyValuePair<string, string> entry in param)
+                    {
+                        query[entry.Key] = entry.Value;
+                    }
+                }
+                builder.Query = query.ToString();
+                Console.WriteLine("POST: " + builder.ToString());
             }
             HttpResponseMessage response = httpClient.PostAsync(endpoint, formUrlEncodedContent).Result;
             return response.Content.ReadAsStringAsync().Result;
