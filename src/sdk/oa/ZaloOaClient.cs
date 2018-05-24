@@ -9,6 +9,8 @@ namespace ZaloCSharpSDK
 {
     public class ZaloOaClient : ZaloBaseClient
     {
+        private static readonly DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         private ZaloOaInfo _oaInfo;
 
         public ZaloOaInfo OaInfo
@@ -272,5 +274,68 @@ namespace ZaloCSharpSDK
             string response = sendHttpPostRequest(ZaloEndpoint.CREATE_QRCODE_ENDPOINT, param, APIConfig.DEFAULT_HEADER);
             return JObject.Parse(response);
         }
+
+        public JObject excuteRequest(string endPoint, string method, Dictionary<string, string> param){
+            string url = "";
+            Dictionary<string, string> sortedMap = new Dictionary<string, string>();
+            if (param == null) {
+                param = new Dictionary<string, string>();
+            }
+            foreach (KeyValuePair<string, string> entry in param)
+            {
+                string key = entry.Key;
+                string value = entry.Value;
+                if (key.Equals("url")) {
+                    url = value.ToString();
+                } else {
+                    sortedMap.Add(key, value);
+                }
+            }
+            StringBuilder macContent = new StringBuilder();
+            macContent.Append(OaInfo.oaId);
+            foreach (KeyValuePair<string, string> entry in sortedMap)
+            {
+                string key = entry.Key;
+                string value = entry.Value;
+                if (!key.Contains("oaid") && !key.Contains("timestamp")) {
+                    macContent.Append(value);
+                }
+            }
+            long timestamp = (long)(DateTime.UtcNow - Jan1st1970).TotalMilliseconds;
+            macContent.Append(timestamp);
+            macContent.Append(OaInfo.secretKey);
+            string mac = MacUtils.buildMac(macContent.ToString());
+            sortedMap.Add("oaid", OaInfo.oaId.ToString());
+            sortedMap.Add("timestamp", timestamp.ToString());
+            sortedMap.Add("mac", mac);
+            string response;
+            if (!url.Contains(""))
+            {
+                response = sendHttpUploadRequest(endPoint, url, sortedMap, APIConfig.DEFAULT_HEADER);
+            }
+            else
+            {
+                if ("GET".Equals(method.ToUpper()))
+                {
+                    response = sendHttpGetRequest(endPoint, sortedMap, APIConfig.DEFAULT_HEADER);
+                }
+                else
+                {
+                    response = sendHttpPostRequest(endPoint, sortedMap, APIConfig.DEFAULT_HEADER);
+                }
+            }
+            JObject result = null;
+            try
+            {
+
+                result = JObject.Parse(response);
+            }
+            catch (Exception e)
+            {
+                throw new APIException("Response is not json: " + response);
+            }
+            return result;
+        }
+
     }
 }
