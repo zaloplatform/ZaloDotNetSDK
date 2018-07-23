@@ -19,9 +19,10 @@ namespace ZaloCSharpSDK
         public static string SEND_ACTION_MESSAGE_ENDPOINT = getEndpoint("sendmessage/actionlist");
         public static string SEND_STICKER_MESSAGE_ENDPOINT = getEndpoint("sendmessage/sticker");
         public static string SEND_GIF_MESSAGE_ENDPOINT = getEndpoint("sendmessage/gif");
+        public static string GET_PROFILE_EDNPOINT = getEndpoint("getprofile");
         public static string UPLOAD_IMAGE_ENDPOINT = getEndpoint("upload/image");
         public static string UPLOAD_GIF_ENDPOINT = getEndpoint("upload/gif");
-        public static string GET_PROFILE_EDNPOINT = getEndpoint("getprofile");
+            
         public static string GET_MESSAGE_STATUS_ENDPOINT = getEndpoint("getmessagestatus");
         public static string REPLY_TEXT_MESSAGE_ENDPOINT = getEndpoint("sendmessage/reply/text");
         public static string REPLY_IMAGE_MESSAGE_ENDPOINT = getEndpoint("sendmessage/reply/image");
