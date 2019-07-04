@@ -1,4 +1,4 @@
-# Zalo SDK for C# (v1)
+# Zalo SDK
 
 A SDK for building Chatbot, Shop, Article, Social API, Login, Official Account messsage, Official Account Follower Managed... on Zalo Platform.
 
