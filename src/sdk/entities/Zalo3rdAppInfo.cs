@@ -1,5 +1,5 @@
-namespace ZaloCSharpSDK {
-    public class Zalo3rdAppInfo {
+namespace ZaloDotNetSDK {
+    public class ZaloAppInfo {
 
         private long _appId;
         private string _secretKey;
@@ -23,7 +23,7 @@ namespace ZaloCSharpSDK {
             set { _callbackUrl = value; }
         }
 
-        public Zalo3rdAppInfo(long appId, string secretKey, string callbackUrl) {
+        public ZaloAppInfo(long appId, string secretKey, string callbackUrl) {
             _appId = appId;
             _secretKey = secretKey;
             _callbackUrl = callbackUrl;

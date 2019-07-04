@@ -1,0 +1,30 @@
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/bin/Debug/netcoreapp2.1/ZaloDotNetSDK.deps.json
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/bin/Debug/netcoreapp2.1/ZaloDotNetSDK.dll
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/bin/Debug/netcoreapp2.1/ZaloDotNetSDK.pdb
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.csprojAssemblyReference.cache
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.csproj.CoreCompileInputs.cache
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.AssemblyInfoInputs.cache
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.AssemblyInfo.cs
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.dll
+/home/linhndh/Documents/Zalo SDK/ZaloDotNetSDK/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.pdb
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/bin/Debug/netcoreapp2.1/ZaloDotNetSDK.deps.json
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/bin/Debug/netcoreapp2.1/ZaloDotNetSDK.dll
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/bin/Debug/netcoreapp2.1/ZaloDotNetSDK.pdb
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.csproj.CoreCompileInputs.cache
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.AssemblyInfoInputs.cache
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.AssemblyInfo.cs
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/build/netcoreapp2.1/ZaloDotNetSDK.deps.json
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/build/netcoreapp2.1/ZaloDotNetSDK.dll
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/build/netcoreapp2.1/ZaloDotNetSDK.pdb
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.dll
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.pdb
+C:/Users/CPU10932-local/Desktop/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.csprojAssemblyReference.cache
+/home/hienhh/Downloads/ZaloDotNetSDK-master/build/netcoreapp2.1/ZaloDotNetSDK.deps.json
+/home/hienhh/Downloads/ZaloDotNetSDK-master/build/netcoreapp2.1/ZaloDotNetSDK.dll
+/home/hienhh/Downloads/ZaloDotNetSDK-master/build/netcoreapp2.1/ZaloDotNetSDK.pdb
+/home/hienhh/Downloads/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.csprojAssemblyReference.cache
+/home/hienhh/Downloads/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.csproj.CoreCompileInputs.cache
+/home/hienhh/Downloads/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.AssemblyInfoInputs.cache
+/home/hienhh/Downloads/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.AssemblyInfo.cs
+/home/hienhh/Downloads/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.dll
+/home/hienhh/Downloads/ZaloDotNetSDK-master/obj/Debug/netcoreapp2.1/ZaloDotNetSDK.pdb

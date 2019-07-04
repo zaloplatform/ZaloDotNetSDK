@@ -6,18 +6,19 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using System.IO;
 
-namespace ZaloCSharpSDK {
+namespace ZaloDotNetSDK {
     public class ZaloBaseClient {
-        private static readonly DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         public bool isDebug = false;
 
-        protected string sendHttpGetRequest(string endpoint, Dictionary<string, string> param, Dictionary<string, string> header) {
+        protected string sendHttpGetRequest(string endpoint, Dictionary<string, dynamic> param, Dictionary<string, string> header) {
             UriBuilder builder = new UriBuilder(endpoint);
             var query = HttpUtility.ParseQueryString(builder.Query);
             if (param != null) {
-                foreach (KeyValuePair<string, string> entry in param) {
-                    query[entry.Key] = entry.Value;
+                foreach (KeyValuePair<string, dynamic> entry in param) {
+                    if (entry.Value is string) {
+                        query[entry.Key] = entry.Value;
+                    }
                 }
             }
             builder.Query = query.ToString();
@@ -35,25 +36,31 @@ namespace ZaloCSharpSDK {
             return httpClient.GetStringAsync(builder.ToString()).Result;
         }
 
-        protected string sendHttpPostRequest(string endpoint, Dictionary<string, string> param, Dictionary<string, string> header) {
-            FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(param);
+        protected string sendHttpPostRequest(string endpoint, Dictionary<string, dynamic> param, Dictionary<string, string> header) {
+            Dictionary<string, string> paramsUrl = new Dictionary<string, string>();
             HttpClient httpClient = new HttpClient();
             if (header != null) {
                 foreach (KeyValuePair<string, string> entry in header) {
                     httpClient.DefaultRequestHeaders.Add(entry.Key, entry.Value);
                 }
             }
+            if (param != null) {
+                foreach (KeyValuePair<string, dynamic> entry in param)
+                {
+                    if (entry.Value is string) {
+                        paramsUrl[entry.Key] = entry.Value;
+                    }
+                }
+            }
+            FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(paramsUrl);
             if (isDebug)
             {
                 UriBuilder builder = new UriBuilder(endpoint);
                 var query = HttpUtility.ParseQueryString(builder.Query);
-                if (param != null)
-                {
-                    foreach (KeyValuePair<string, string> entry in param)
+                    foreach (KeyValuePair<string, string> entry in paramsUrl)
                     {
-                        query[entry.Key] = entry.Value;
+                            query[entry.Key] = entry.Value;
                     }
-                }
                 builder.Query = query.ToString();
                 Console.WriteLine("POST: " + builder.ToString());
             }
@@ -61,18 +68,60 @@ namespace ZaloCSharpSDK {
             return response.Content.ReadAsStringAsync().Result;
         }
 
-        protected string sendHttpUploadRequest(string endpoint, string pathToFile, Dictionary<string, string> param, Dictionary<string, string> header)
+        protected string sendHttpPostRequestWithBody(string endpoint, Dictionary<string, dynamic> param, string body, Dictionary<string, string> header) {
+            HttpClient httpClient = new HttpClient();
+            if (header != null) {
+                foreach (KeyValuePair<string, string> entry in header) {
+                    httpClient.DefaultRequestHeaders.Add(entry.Key, entry.Value);
+                }
+            }
+            
+            UriBuilder builder = new UriBuilder(endpoint);
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            if (param != null)
+            {
+                foreach (KeyValuePair<string, dynamic> entry in param)
+                {
+                    if (entry.Value is string) {
+                        query[entry.Key] = entry.Value;
+                    }
+                }
+            }
+            builder.Query = query.ToString();
+
+            if (body == null) {
+                body = "";
+            }
+            var content = new StringContent(body, Encoding.UTF8, "application/json");
+            if (isDebug)
+            {
+                Console.WriteLine("POST: " + builder.ToString());
+                Console.WriteLine("body: " + body);
+                Console.WriteLine("body content: " + content);
+            }
+            HttpResponseMessage response = httpClient.PostAsync(builder.ToString(), content).Result;
+            return response.Content.ReadAsStringAsync().Result;
+        }
+
+        protected string sendHttpUploadRequest(string endpoint, Dictionary<string, dynamic> param, Dictionary<string, string> header)
         {
             MultipartFormDataContent form = new MultipartFormDataContent();
 
+            UriBuilder builder = new UriBuilder(endpoint);
+            var query = HttpUtility.ParseQueryString(builder.Query);
             if (param != null)
             {
-                foreach (KeyValuePair<string, string> entry in param)
+                foreach (KeyValuePair<string, dynamic> entry in param)
                 {
-                    form.Add(new StringContent(entry.Value), entry.Key);
+                    if (entry.Value is string) {
+                        query[entry.Key] = entry.Value;
+                    }
                 }
             }
-            form.Add(new ByteArrayContent(FileUtils.loadFile(pathToFile)), "file", Path.GetFileName(pathToFile));
+            builder.Query = query.ToString();
+
+            ZaloFile file = param["file"];
+            form.Add(file.GetData(), "file", file.GetName());
 
             HttpClient httpClient = new HttpClient();
             if (header != null)
@@ -83,59 +132,8 @@ namespace ZaloCSharpSDK {
                 }
             }
 
-            HttpResponseMessage response = httpClient.PostAsync(endpoint, form).Result;
+            HttpResponseMessage response = httpClient.PostAsync(builder.ToString(), form).Result;
             return response.Content.ReadAsStringAsync().Result;
-        }
-
-        protected Dictionary<string, string> createParam(ZaloOaInfo oaInfo, JObject data)
-        {
-            long timestamp = (long) (DateTime.UtcNow - Jan1st1970).TotalMilliseconds;
-
-            StringBuilder macContent = new StringBuilder();
-            macContent.Append(oaInfo.oaId);
-
-            Dictionary<string, string> param = new Dictionary<string, string>();
-            if (data["file"] == null)
-            {
-                foreach (var item in data)
-                {
-                    macContent.Append(item.Value);
-                    param.Add(item.Key, item.Value.ToString());
-                }
-            }
-            macContent.Append(timestamp);
-            macContent.Append(oaInfo.secretKey);
-            string mac = MacUtils.buildMac(macContent.ToString());
-
-            param.Add("oaid", oaInfo.oaId.ToString());
-            param.Add("timestamp", timestamp.ToString());
-            param.Add("mac", mac);
-
-            return param;
-        }
-
-        protected Dictionary<string, string> createOnbehalfParam(Zalo3rdAppInfo appInfo, JObject data)
-        {
-            long timestamp = (long)(DateTime.UtcNow - Jan1st1970).TotalMilliseconds;
-
-            StringBuilder macContent = new StringBuilder();
-            macContent.Append(appInfo.appId);
-
-            Dictionary<string, string> param = new Dictionary<string, string>();
-            foreach (var item in data)
-            {
-                macContent.Append(item.Value);
-                param.Add(item.Key, item.Value.ToString());
-            }
-            macContent.Append(timestamp);
-            macContent.Append(appInfo.secretKey);
-            string mac = MacUtils.buildMac(macContent.ToString());
-
-            param.Add("appid", appInfo.appId.ToString());
-            param.Add("timestamp", timestamp.ToString());
-            param.Add("mac", mac);
-
-            return param;
         }
     }
 }

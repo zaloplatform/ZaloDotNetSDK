@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net;
 
-namespace ZaloCSharpSDK
+namespace ZaloDotNetSDK
 {
     public class FileUtils
     {

@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace ZaloCSharpSDK
+namespace ZaloDotNetSDK
 {
     public class MacUtils
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace ZaloCSharpSDK {
+namespace ZaloDotNetSDK {
     public class APIException : Exception {
         private int _code;
 
