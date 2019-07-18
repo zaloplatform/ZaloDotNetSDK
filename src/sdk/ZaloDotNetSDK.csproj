@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <!-- <OutputType>Exe</OutputType> -->
-    <!-- <TargetFramework>net452</TargetFramework> -->
+    <!--<TargetFramework>net452</TargetFramework>-->
     <PackageId>vng.zalo.ZaloDotNetSDK</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>ZaloPlatform</Authors>
     <Company>VNG</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -16,6 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.3" />

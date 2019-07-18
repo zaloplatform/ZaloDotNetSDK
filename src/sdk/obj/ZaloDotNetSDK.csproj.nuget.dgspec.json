@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/hienhh/Downloads/ZaloDotNetSDK-master/ZaloDotNetSDK.csproj": {}
+    "/home/hienhh/Desktop/hienhh/Zalo_Github_SDK/sdk/ZaloDotNetSDK.csproj": {}
   },
   "projects": {
-    "/home/hienhh/Downloads/ZaloDotNetSDK-master/ZaloDotNetSDK.csproj": {
-      "version": "1.0.2",
+    "/home/hienhh/Desktop/hienhh/Zalo_Github_SDK/sdk/ZaloDotNetSDK.csproj": {
+      "version": "1.0.3",
       "restore": {
-        "projectUniqueName": "/home/hienhh/Downloads/ZaloDotNetSDK-master/ZaloDotNetSDK.csproj",
+        "projectUniqueName": "/home/hienhh/Desktop/hienhh/Zalo_Github_SDK/sdk/ZaloDotNetSDK.csproj",
         "projectName": "vng.zalo.ZaloDotNetSDK",
-        "projectPath": "/home/hienhh/Downloads/ZaloDotNetSDK-master/ZaloDotNetSDK.csproj",
+        "projectPath": "/home/hienhh/Desktop/hienhh/Zalo_Github_SDK/sdk/ZaloDotNetSDK.csproj",
         "packagesPath": "/home/hienhh/.nuget/packages/",
-        "outputPath": "/home/hienhh/Downloads/ZaloDotNetSDK-master/obj/",
+        "outputPath": "/home/hienhh/Desktop/hienhh/Zalo_Github_SDK/sdk/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"

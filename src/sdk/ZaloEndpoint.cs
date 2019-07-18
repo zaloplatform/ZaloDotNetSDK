@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZaloCSharpSDK
+namespace ZaloDotNetSDK
 {
     public class ZaloEndpoint
     {
@@ -22,7 +22,7 @@ namespace ZaloCSharpSDK
         public static string GET_PROFILE_EDNPOINT = getEndpoint("getprofile");
         public static string UPLOAD_IMAGE_ENDPOINT = getEndpoint("upload/image");
         public static string UPLOAD_GIF_ENDPOINT = getEndpoint("upload/gif");
-            
+
         public static string GET_MESSAGE_STATUS_ENDPOINT = getEndpoint("getmessagestatus");
         public static string REPLY_TEXT_MESSAGE_ENDPOINT = getEndpoint("sendmessage/reply/text");
         public static string REPLY_IMAGE_MESSAGE_ENDPOINT = getEndpoint("sendmessage/reply/image");
@@ -69,7 +69,7 @@ namespace ZaloCSharpSDK
 
         private static string getEndpoint(string url)
         {
-            return String.Format("{0}/{1}/{2}", APIConfig.DEFAULT_OA_API_BASE, APIConfig.DEFAULT_OA_API_VERSION, url);
+            return string.Format("{0}/{1}/{2}", APIConfig.DEFAULT_OA_API_BASE, APIConfig.DEFAULT_OA_API_VERSION, url);
         }
     }
 }

@@ -3,8 +3,6 @@ using System.Web;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Text;
-using Newtonsoft.Json.Linq;
-using System.IO;
 
 namespace ZaloDotNetSDK {
     public class ZaloBaseClient {

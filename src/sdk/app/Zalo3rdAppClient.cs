@@ -3,12 +3,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using ZaloDotNetSDK;
 
 namespace ZaloCSharpSDK {
     public class Zalo3rdAppClient : ZaloBaseClient {
-        private Zalo3rdAppInfo _appInfo;
+        private ZaloAppInfo _appInfo;
 
-        public Zalo3rdAppClient(Zalo3rdAppInfo _appInfo) {
+        public Zalo3rdAppClient(ZaloAppInfo _appInfo) {
             this._appInfo = _appInfo;
         }
         private static string LOGIN_ENPOINT = "https://oauth.zaloapp.com/v3/auth?app_id={0}&redirect_uri={1}";
@@ -20,7 +21,7 @@ namespace ZaloCSharpSDK {
         public JObject getAccessToken(string oauthCode) {
             string response = "";
             try {
-                Dictionary<string, string> param = new Dictionary<string, string>();
+                Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
                 param.Add("app_id", _appInfo.appId.ToString());
                 param.Add("app_secret", _appInfo.secretKey);
                 param.Add("code", oauthCode);
@@ -37,7 +38,7 @@ namespace ZaloCSharpSDK {
         public JObject getProfile(string accessToken, string fields) {
             string response = "";
             try {
-                Dictionary<string, string> param = new Dictionary<string, string>();
+                Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
                 param.Add("access_token", accessToken);
                 param.Add("fields", fields);
                 response = sendHttpGetRequest(GET_PROFILE_ENPOINT, param, APIConfig.DEFAULT_HEADER);
@@ -53,7 +54,7 @@ namespace ZaloCSharpSDK {
         public JObject getFriends(string accessToken, int offset, int limit, string fields) {
             string response = "";
             try {
-                Dictionary<string, string> param = new Dictionary<string, string>();
+                Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
                 param.Add("access_token", accessToken);
                 param.Add("offset", offset.ToString());
                 param.Add("limit", limit.ToString());
@@ -71,7 +72,7 @@ namespace ZaloCSharpSDK {
         public JObject getInvitableFriends(string accessToken, int offset, int limit, string fields) {
             string response = "";
             try {
-                Dictionary<string, string> param = new Dictionary<string, string>();
+                Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
                 param.Add("access_token", accessToken);
                 param.Add("offset", offset.ToString());
                 param.Add("limit", limit.ToString());
@@ -89,7 +90,7 @@ namespace ZaloCSharpSDK {
         public JObject postFeed(string accessToken, string message, string link) {
             string response = "";
             try {
-                Dictionary<string, string> param = new Dictionary<string, string>();
+                Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
                 param.Add("access_token", accessToken);
                 param.Add("message", message);
                 param.Add("link", link);
@@ -106,7 +107,7 @@ namespace ZaloCSharpSDK {
         public JObject sendAppRequest(string accessToken, List<long> toUserIds, string message) {
             string response = "";
             try {
-                Dictionary<string, string> param = new Dictionary<string, string>();
+                Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
                 param.Add("access_token", accessToken);
                 param.Add("to", String.Join(",", toUserIds));
                 param.Add("message", message);
@@ -123,7 +124,7 @@ namespace ZaloCSharpSDK {
         public JObject sendMessage(string accessToken, long userId, string message, string link) {
             string response = "";
             try {
-                Dictionary<string, string> param = new Dictionary<string, string>();
+                Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
                 param.Add("access_token", accessToken);
                 param.Add("to", userId.ToString());
                 param.Add("message", message);
