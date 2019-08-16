@@ -1,6 +1,4 @@
 using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using ZaloDotNetSDK;
@@ -17,7 +15,7 @@ namespace ZaloCSharpSDK {
             return string.Format(LOGIN_ENPOINT, _appInfo.appId, _appInfo.callbackUrl);
         }
 
-        private static string ACCESSTOKEN_ENPOINT = "https://oauth.zaloapp.com/v3/access_token";    
+        private static string ACCESSTOKEN_ENPOINT = "https://oauth.zaloapp.com/v3/access_token";
         public JObject getAccessToken(string oauthCode) {
             string response = "";
             try {

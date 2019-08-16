@@ -1,10 +1,6 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Http;
 using ZaloDotNetSDK.entities;
 using ZaloDotNetSDK.utils;
 using ZaloDotNetSDK.entities.oa;
@@ -44,12 +40,12 @@ namespace ZaloDotNetSDK
                 {
                     response = sendHttpPostRequestWithBody(endPoint, param, param["body"], APIConfig.DEFAULT_HEADER);
                 }
-                else 
+                else
                 {
                     response = sendHttpPostRequest(endPoint, param, APIConfig.DEFAULT_HEADER);
                 }
             }
-            
+
             JObject result = null;
             try
             {
