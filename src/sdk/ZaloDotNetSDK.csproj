@@ -5,7 +5,7 @@
     <!-- <OutputType>Exe</OutputType> -->
     <!--<TargetFramework>net452</TargetFramework>-->
     <PackageId>vng.zalo.ZaloDotNetSDK</PackageId>
-    <Version>1.0.3</Version>
+    <Version>1.0.6</Version>
     <Authors>ZaloPlatform</Authors>
     <Company>VNG</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>

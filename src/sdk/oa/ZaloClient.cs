@@ -790,7 +790,7 @@ namespace ZaloDotNetSDK
             return result;
         }
 
-        public JObject getListConversationWithUser(string user_id, int offset, int count)
+        public JObject getListConversationWithUser(long user_id, int offset, int count)
         {
             JObject result = new JObject();
             Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
@@ -1216,8 +1216,8 @@ namespace ZaloDotNetSDK
             JObject result = new JObject();
 
             Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
-            param.Add("offset", offset);
-            param.Add("limit", limit);
+            param.Add("offset", offset.ToString());
+            param.Add("limit", limit.ToString());
 
             result = excuteRequest("GET", "https://openapi.zalo.me/v2.0/store/category/getcategoryofoa", param);
 

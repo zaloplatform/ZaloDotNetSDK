@@ -80,7 +80,7 @@ namespace ZaloDotNetSDK {
             {
                 foreach (KeyValuePair<string, dynamic> entry in param)
                 {
-                    if (entry.Value is string) {
+                    if (entry.Value is string && !entry.Key.Equals("body")) {
                         query[entry.Key] = entry.Value;
                     }
                 }
