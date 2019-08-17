@@ -1,5 +1,4 @@
 using System;
-using System.Web;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +10,7 @@ namespace ZaloDotNetSDK {
 
         protected string sendHttpGetRequest(string endpoint, Dictionary<string, dynamic> param, Dictionary<string, string> header) {
             UriBuilder builder = new UriBuilder(endpoint);
-            var query = HttpUtility.ParseQueryString(builder.Query);
+            var query = Utils.ParseQueryString(builder.Query);
             if (param != null) {
                 foreach (KeyValuePair<string, dynamic> entry in param) {
                     if (entry.Value is string) {
@@ -19,7 +18,7 @@ namespace ZaloDotNetSDK {
                     }
                 }
             }
-            builder.Query = query.ToString();
+            builder.Query = Utils.ToQueryString(query);
 
             HttpClient httpClient = new HttpClient();
             if (header != null) {
@@ -54,12 +53,12 @@ namespace ZaloDotNetSDK {
             if (isDebug)
             {
                 UriBuilder builder = new UriBuilder(endpoint);
-                var query = HttpUtility.ParseQueryString(builder.Query);
+                var query = Utils.ParseQueryString(builder.Query);
                     foreach (KeyValuePair<string, string> entry in paramsUrl)
                     {
                             query[entry.Key] = entry.Value;
                     }
-                builder.Query = query.ToString();
+                builder.Query = Utils.ToQueryString(query);
                 Console.WriteLine("POST: " + builder.ToString());
             }
             HttpResponseMessage response = httpClient.PostAsync(endpoint, formUrlEncodedContent).Result;
@@ -73,9 +72,9 @@ namespace ZaloDotNetSDK {
                     httpClient.DefaultRequestHeaders.Add(entry.Key, entry.Value);
                 }
             }
-            
+
             UriBuilder builder = new UriBuilder(endpoint);
-            var query = HttpUtility.ParseQueryString(builder.Query);
+            var query = Utils.ParseQueryString(builder.Query);
             if (param != null)
             {
                 foreach (KeyValuePair<string, dynamic> entry in param)
@@ -85,7 +84,7 @@ namespace ZaloDotNetSDK {
                     }
                 }
             }
-            builder.Query = query.ToString();
+            builder.Query = Utils.ToQueryString(query);
 
             if (body == null) {
                 body = "";
@@ -106,7 +105,7 @@ namespace ZaloDotNetSDK {
             MultipartFormDataContent form = new MultipartFormDataContent();
 
             UriBuilder builder = new UriBuilder(endpoint);
-            var query = HttpUtility.ParseQueryString(builder.Query);
+            var query = Utils.ParseQueryString(builder.Query);
             if (param != null)
             {
                 foreach (KeyValuePair<string, dynamic> entry in param)
@@ -116,7 +115,7 @@ namespace ZaloDotNetSDK {
                     }
                 }
             }
-            builder.Query = query.ToString();
+            builder.Query = Utils.ToQueryString(query);
 
             ZaloFile file = param["file"];
             form.Add(file.GetData(), "file", file.GetName());
