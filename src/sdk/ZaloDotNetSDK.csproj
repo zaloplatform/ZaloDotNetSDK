@@ -1,15 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <!-- <OutputType>Exe</OutputType> -->
-    <!--<TargetFramework>net452</TargetFramework>-->
-    <PackageId>vng.zalo.ZaloDotNetSDK</PackageId>
-    <Version>1.0.6</Version>
+	 <!--<targetframework>net452</targetframework>-->
+    <targetframework>netcoreapp2.1</targetframework>
+	<!--<OutputType>Exe</OutputType>-->
+	<PackageId>vng.zalo.ZaloDotNetSDK</PackageId>
+    <Version>1.0.8</Version>
     <Authors>ZaloPlatform</Authors>
     <Company>VNG</Company>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-  </PropertyGroup>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  
+</PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>build\</OutputPath>

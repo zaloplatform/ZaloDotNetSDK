@@ -234,6 +234,8 @@
       "type": "package",
       "path": "microsoft.aspnet.webapi.client/5.2.3",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/System.Net.Http.Formatting.dll",
         "lib/net45/System.Net.Http.Formatting.xml",
         "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
@@ -590,6 +592,7 @@
       "path": "netstandard.library/2.0.3",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/NETStandard.Library.targets",
@@ -751,32 +754,36 @@
     ]
   },
   "packageFolders": {
-    "/home/hienhh/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\LAP13561-local\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.6",
+    "version": "1.0.8",
     "restore": {
-      "projectUniqueName": "/home/hienhh/Desktop/hienhh/Zalo_Github_SDK/ZaloDotNetSDK/src/sdk/ZaloDotNetSDK.csproj",
+      "projectUniqueName": "C:\\Workplace\\ZaloDotNetSDK\\src\\sdk\\ZaloDotNetSDK.csproj",
       "projectName": "vng.zalo.ZaloDotNetSDK",
-      "projectPath": "/home/hienhh/Desktop/hienhh/Zalo_Github_SDK/ZaloDotNetSDK/src/sdk/ZaloDotNetSDK.csproj",
-      "packagesPath": "/home/hienhh/.nuget/packages/",
-      "outputPath": "/home/hienhh/Desktop/hienhh/Zalo_Github_SDK/ZaloDotNetSDK/src/sdk/obj/",
+      "projectPath": "C:\\Workplace\\ZaloDotNetSDK\\src\\sdk\\ZaloDotNetSDK.csproj",
+      "packagesPath": "C:\\Users\\LAP13561-local\\.nuget\\packages\\",
+      "outputPath": "C:\\Workplace\\ZaloDotNetSDK\\src\\sdk\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "/home/hienhh/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\LAP13561-local\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "projectReferences": {}
         }
       },
@@ -788,6 +795,7 @@
     },
     "frameworks": {
       "netcoreapp2.1": {
+        "targetAlias": "netcoreapp2.1",
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": {
             "target": "Package",
@@ -805,10 +813,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -817,7 +831,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebApi.Client 5.2.3' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Microsoft.AspNet.WebApi.Client 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.WebApi.Client",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.1"

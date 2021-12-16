@@ -9,3 +9,15 @@ C:\Users\CPU10932-local\Desktop\sdk\obj\Debug\net452\ZaloDotNetSDK.csproj.CopyCo
 C:\Users\CPU10932-local\Desktop\sdk\obj\Debug\net452\ZaloDotNetSDK.dll
 C:\Users\CPU10932-local\Desktop\sdk\obj\Debug\net452\ZaloDotNetSDK.pdb
 C:\Users\CPU10932-local\Desktop\sdk\obj\Debug\net452\ZaloDotNetSDK.csprojAssemblyReference.cache
+C:\Workplace\ZaloDotNetSDK\src\sdk\build\net452\ZaloDotNetSDK.dll
+C:\Workplace\ZaloDotNetSDK\src\sdk\build\net452\ZaloDotNetSDK.pdb
+C:\Workplace\ZaloDotNetSDK\src\sdk\build\net452\System.Net.Http.Formatting.dll
+C:\Workplace\ZaloDotNetSDK\src\sdk\build\net452\Newtonsoft.Json.dll
+C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.AssemblyInfoInputs.cache
+C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.AssemblyInfo.cs
+C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.csproj.CoreCompileInputs.cache
+C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.csproj.CopyComplete
+C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.dll
+C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.pdb
+C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.csproj.AssemblyReference.cache

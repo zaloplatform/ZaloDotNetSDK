@@ -121,6 +121,12 @@ namespace ZaloDotNetSDK {
             ZaloFile file = param["file"];
             form.Add(file.GetData(), "file", file.GetName());
 
+            if (param.ContainsKey("file_thumb"))
+            {
+                ZaloFile fileThumb = param["file_thumb"];
+                form.Add(file.GetData(), "file_thumb", file.GetName());
+            }
+
             HttpClient httpClient = new HttpClient();
             if (header != null)
             {

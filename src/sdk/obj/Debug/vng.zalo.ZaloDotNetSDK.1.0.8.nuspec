@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>vng.zalo.ZaloDotNetSDK</id>
-    <version>1.0.6</version>
+    <version>1.0.8</version>
     <authors>ZaloPlatform</authors>
     <description>Package Description</description>
     <dependencies>

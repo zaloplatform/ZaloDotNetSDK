@@ -27,26 +27,33 @@ namespace ZaloDotNetSDK
             if (param == null) {
                 param = new Dictionary<string, dynamic>();
             }
-            param.Add("access_token", this.Access_token);
+
+            Dictionary<string, string> headers = APIConfig.createDefaultHeader();
+            if (headers.ContainsKey("access_token")){
+                headers.Remove("access_token");
+            }
+            headers.Add("access_token", this.Access_token);
+
+
             string response;
 
             if ("GET".Equals(method.ToUpper()))
             {
-                response = sendHttpGetRequest(endPoint, param, APIConfig.DEFAULT_HEADER);
+                response = sendHttpGetRequest(endPoint, param, headers);
             }
             else
             {
                 if (param.ContainsKey("file"))
                 {
-                    response = sendHttpUploadRequest(endPoint, param, APIConfig.DEFAULT_HEADER);
+                    response = sendHttpUploadRequest(endPoint, param, headers);
                 }
                 else if (param.ContainsKey("body"))
                 {
-                    response = sendHttpPostRequestWithBody(endPoint, param, param["body"], APIConfig.DEFAULT_HEADER);
+                    response = sendHttpPostRequestWithBody(endPoint, param, param["body"], headers);
                 }
                 else 
                 {
-                    response = sendHttpPostRequest(endPoint, param, APIConfig.DEFAULT_HEADER);
+                    response = sendHttpPostRequest(endPoint, param, headers);
                 }
             }
             

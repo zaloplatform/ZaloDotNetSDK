@@ -1,12 +1,12 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "d24ee0ea8602f7f0f19521dfa246d5a36b455b5c"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "ZaloDotNetSDK/1.0.6": {
+      "ZaloDotNetSDK/1.0.8": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Newtonsoft.Json": "12.0.2"
@@ -34,7 +34,7 @@
     }
   },
   "libraries": {
-    "ZaloDotNetSDK/1.0.6": {
+    "ZaloDotNetSDK/1.0.8": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
