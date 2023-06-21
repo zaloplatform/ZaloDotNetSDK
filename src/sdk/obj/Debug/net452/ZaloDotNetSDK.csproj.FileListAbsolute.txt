@@ -20,4 +20,3 @@ C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.csproj.CoreCom
 C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.csproj.CopyComplete
 C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.dll
 C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.pdb
-C:\Workplace\ZaloDotNetSDK\src\sdk\obj\Debug\net452\ZaloDotNetSDK.csproj.AssemblyReference.cache

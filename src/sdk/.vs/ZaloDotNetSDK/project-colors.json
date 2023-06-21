@@ -20,7 +20,32 @@
       "ProjectGuid": "ed37cda0-cad3-4086-aac2-b73cbf5e7ac0",
       "DisplayName": "ZaloDotNetSDK",
       "ColorIndex": 2
+    },
+    "2c2dc9ca-123f-49b5-9f41-c3c226c74402": {
+      "ProjectGuid": "2c2dc9ca-123f-49b5-9f41-c3c226c74402",
+      "DisplayName": "ZaloDotNetSDK",
+      "ColorIndex": 3
+    },
+    "42fd37d2-78cd-4dbe-92a3-555d0f25608d": {
+      "ProjectGuid": "42fd37d2-78cd-4dbe-92a3-555d0f25608d",
+      "DisplayName": "ZaloDotNetSDK",
+      "ColorIndex": 4
+    },
+    "6790fb3a-6fa3-4de4-9c6a-ad3da175a40a": {
+      "ProjectGuid": "6790fb3a-6fa3-4de4-9c6a-ad3da175a40a",
+      "DisplayName": "ZaloDotNetSDK",
+      "ColorIndex": 5
+    },
+    "600ef0d1-369c-40b0-ae09-98d99fe0687f": {
+      "ProjectGuid": "600ef0d1-369c-40b0-ae09-98d99fe0687f",
+      "DisplayName": "ZaloDotNetSDK",
+      "ColorIndex": 6
+    },
+    "a620ec51-f3eb-4772-aa8f-e309da1943a7": {
+      "ProjectGuid": "a620ec51-f3eb-4772-aa8f-e309da1943a7",
+      "DisplayName": "ZaloDotNetSDK",
+      "ColorIndex": 7
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 8
 }

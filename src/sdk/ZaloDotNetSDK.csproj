@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	 <!--<targetframework>net452</targetframework>-->
-    <targetframework>netcoreapp2.1</targetframework>
-	<!--<OutputType>Exe</OutputType>-->
+	  <!--<targetframework>net452</targetframework-->
+	  <targetframework>netcoreapp2.1</targetframework>
+	  <!--<OutputType>Exe</OutputType>-->
 	<PackageId>vng.zalo.ZaloDotNetSDK</PackageId>
-    <Version>1.0.8</Version>
+    <Version>2.0.0</Version>
     <Authors>ZaloPlatform</Authors>
     <Company>VNG</Company>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>

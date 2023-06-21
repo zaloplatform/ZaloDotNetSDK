@@ -468,5 +468,184 @@ namespace ZaloDotNetSDK.utils
 
             return result;
         }
+
+        public static List<JObject> parseListElementV3ToJson(List<ElementV3> elements)
+        {
+            List<JObject> result = new List<JObject>();
+
+            if (elements == null || elements.Count == 0)
+            {
+                return result;
+            }
+
+            foreach (ElementV3 element in elements)
+            {
+                JObject elementJson = new JObject();
+                switch (element.Type)
+                {
+                    case "banner":
+                        {
+                            BannerElementV3 bannerElement = (BannerElementV3)element;
+                            elementJson = JObject.FromObject(new
+                            {
+                                type = bannerElement.Type,
+                                attachment_id = bannerElement.Attachment_id,
+                                image_url = bannerElement.Image_url
+                            });
+                            break;
+                        }
+                    case "header":
+                        {
+                            HeaderElementV3 headerElementV3 = (HeaderElementV3)element;
+                            elementJson = JObject.FromObject(new
+                            {
+                                type = headerElementV3.Type,
+                                content = headerElementV3.Content,
+                                align = headerElementV3.Align.getValue()
+                            });
+                            break;
+                        }
+                    case "text":
+                        {
+                            TextElementV3 textElementV3 = (TextElementV3)element;
+                            elementJson = JObject.FromObject(new
+                            {
+                                type = textElementV3.Type,
+                                content = textElementV3.Content,
+                                align = textElementV3.Align.getValue()
+                            });
+                            break;
+                        }
+                    case "table":
+                        {
+                            TableElementV3 tableElementV3 = (TableElementV3)element;
+
+                            List<JObject> tableContent = new List<JObject>();
+                            foreach (ElementV3TableItem tableItem in tableElementV3.Content)
+                            {
+                                JObject tableItemJson = new JObject();
+                                if (tableItem.Style.Equals(ElementV3TableItemStyle.NONE))
+                                {
+                                    tableItemJson = JObject.FromObject(new
+                                    {
+                                        key = tableItem.Key,
+                                        value = tableItem.Value,
+                                    });
+                                } else
+                                {
+                                    tableItemJson = JObject.FromObject(new
+                                    {
+                                        key = tableItem.Key,
+                                        value = tableItem.Value,
+                                        style = tableItem.Style
+                                    });
+                                }
+
+                                tableContent.Add(tableItemJson);
+                            }
+
+                            elementJson = JObject.FromObject(new
+                            {
+                                type = tableElementV3.Type,
+                                content = tableContent
+                            });
+                            break;
+                        }
+                }
+                result.Add(elementJson);
+            }
+
+            return result;
+        }
+
+        public static List<JObject> parseListButtonV3ToJson(List<ButtonV3> buttons)
+        {
+            List<JObject> result = new List<JObject>();
+            if (buttons == null || buttons.Count == 0)
+            {
+                return result;
+            }
+
+            foreach (ButtonV3 button in buttons)
+            {
+                JObject buttonJson = new JObject();
+                switch (button.Type)
+                {
+                    case "oa.open.url":
+                        {
+                            OpenUrlButtonV3 openUrlbutton = (OpenUrlButtonV3)button;
+                            buttonJson = JObject.FromObject(new
+                            {
+                                title = button.Title,
+                                image_icon = button.Image_icon,
+                                type = button.Type,
+                                payload = new
+                                {
+                                    url = openUrlbutton.Url
+                                }
+                            });
+                            break;
+                        }
+                    case "oa.query.show":
+                        {
+                            QueryShowButtonV3 queryShowButton = (QueryShowButtonV3)button;
+                            buttonJson = JObject.FromObject(new
+                            {
+                                title = button.Title,
+                                image_icon = button.Image_icon,
+                                type = button.Type,
+                                payload = queryShowButton.Payload
+                            });
+                            break;
+                        }
+                    case "oa.query.hide":
+                        {
+                            QueryHideButtonV3 queryHideButton = (QueryHideButtonV3)button;
+                            buttonJson = JObject.FromObject(new
+                            {
+                                title = button.Title,
+                                image_icon = button.Image_icon,
+                                type = button.Type,
+                                payload = queryHideButton.Payload
+                            });
+                            break;
+                        }
+                    case "oa.open.sms":
+                        {
+                            OpenSMSButtonV3 openSMSButton = (OpenSMSButtonV3)button;
+                            buttonJson = JObject.FromObject(new
+                            {
+                                title = button.Title,
+                                image_icon = button.Image_icon,
+                                type = button.Type,
+                                payload = new
+                                {
+                                    content = openSMSButton.Content,
+                                    phone_code = openSMSButton.Phone_code
+                                }
+                            });
+                            break;
+                        }
+                    case "oa.open.phone":
+                        {
+                            OpenPhoneButtonV3 openPhoneButton = (OpenPhoneButtonV3)button;
+                            buttonJson = JObject.FromObject(new
+                            {
+                                title = button.Title,
+                                image_icon = button.Image_icon,
+                                type = button.Type,
+                                payload = new
+                                {
+                                    phone_code = openPhoneButton.Phone_code
+                                }
+                            });
+                            break;
+                        }
+                }
+                result.Add(buttonJson);
+            }
+
+            return result;
+        }
     }
 }

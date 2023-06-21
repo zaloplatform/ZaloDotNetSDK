@@ -3,6 +3,7 @@ using System.Web;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Text;
+using System.Net;
 
 namespace ZaloDotNetSDK {
     public class ZaloBaseClient {
@@ -20,7 +21,7 @@ namespace ZaloDotNetSDK {
                 }
             }
             builder.Query = query.ToString();
-
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpClient httpClient = new HttpClient();
             if (header != null) {
                 foreach (KeyValuePair<string, string> entry in header) {
@@ -36,6 +37,7 @@ namespace ZaloDotNetSDK {
 
         protected string sendHttpPostRequest(string endpoint, Dictionary<string, dynamic> param, Dictionary<string, string> header) {
             Dictionary<string, string> paramsUrl = new Dictionary<string, string>();
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpClient httpClient = new HttpClient();
             if (header != null) {
                 foreach (KeyValuePair<string, string> entry in header) {
@@ -67,7 +69,9 @@ namespace ZaloDotNetSDK {
         }
 
         protected string sendHttpPostRequestWithBody(string endpoint, Dictionary<string, dynamic> param, string body, Dictionary<string, string> header) {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpClient httpClient = new HttpClient();
+
             if (header != null) {
                 foreach (KeyValuePair<string, string> entry in header) {
                     httpClient.DefaultRequestHeaders.Add(entry.Key, entry.Value);
@@ -127,6 +131,7 @@ namespace ZaloDotNetSDK {
                 form.Add(file.GetData(), "file_thumb", file.GetName());
             }
 
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpClient httpClient = new HttpClient();
             if (header != null)
             {

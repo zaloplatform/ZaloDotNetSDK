@@ -1356,5 +1356,592 @@ namespace ZaloDotNetSDK
         }
 
         //==========================Shop=====================================
+
+        //==========================Official Account API V3=====================================
+
+        public JObject sendTextMessageToUserIdV3(string user_id, string content)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    text = content
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/cs", param);
+
+            return result;
+        }
+
+        public JObject sendImageMessageToUserIdByUrlV3(string user_id, string content, string image_url)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            List<JObject> elementJson = new List<JObject>();
+            elementJson.Add(JObject.FromObject(new
+            {
+                media_type = "image",
+                url = image_url
+            }));
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    text = content,
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "media",
+                            elements = elementJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/cs", param);
+
+            return result;
+        }
+
+        public JObject sendImageMessageToUserIdByAttachmentIdV3(string user_id, string content, string image_attachment_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            List<JObject> elementJson = new List<JObject>();
+            elementJson.Add(JObject.FromObject(new
+            {
+                media_type = "image",
+                attachment_id = image_attachment_id
+            }));
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    text = content,
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "media",
+                            elements = elementJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/cs", param);
+
+            return result;
+        }
+
+        public JObject sendGifMessageToUserIdByAttachmentIdV3(string user_id, string content, string gif_attachment_id, int gif_width = 120, int gif_height = 120)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            List<JObject> elementJson = new List<JObject>();
+            elementJson.Add(JObject.FromObject(new
+            {
+                media_type = "gif",
+                attachment_id = gif_attachment_id,
+                width = gif_width,
+                height = gif_height
+            }));
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    text = content,
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "media",
+                            elements = elementJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/cs", param);
+
+            return result;
+        }
+
+        public JObject sendRequestUserProfileToUserIdV3(string user_id, string element_title, string element_subtitle, string url_image)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            List<JObject> elementsJson = new List<JObject>();
+            elementsJson.Add(JObject.FromObject(new
+            {
+                title = element_title,
+                subtitle = element_subtitle,
+                image_url = url_image
+            }));
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    text = "",
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "request_user_info",
+                            elements = elementsJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/cs", param);
+
+            return result;
+        }
+
+        public JObject sendFileToUserIdV3(string user_id, string file_attachment_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    attachment = new
+                    {
+                        type = "file",
+                        payload = new
+                        {
+                            token = file_attachment_id
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/cs", param);
+
+            return result;
+        }
+
+        public JObject sendQuoteMessageToUserIdV3(string user_id, string content, string quote_message_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    text = content,
+                    quote_message_id
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/cs", param);
+
+            return result;
+        }
+
+        public JObject sendStickerMessageToUserIdV3(string user_id, string attachment_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            List<JObject> elementJson = new List<JObject>();
+            elementJson.Add(JObject.FromObject(new
+            {
+                media_type = "sticker",
+                attachment_id
+            }));
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "media",
+                            elements = elementJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/cs", param);
+
+            return result;
+        }
+
+        public JObject sendTextMessageToAnonyous(string anonymous_id, string conversation_id, string content)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    anonymous_id,
+                    conversation_id
+                },
+                message = new
+                {
+                    text = content
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/message", param);
+
+            return result;
+        }
+
+        public JObject sendImageMessageToAnonyousByUrl(string anonymous_id, string conversation_id, string content, string image_url)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            List<JObject> elementJson = new List<JObject>();
+            elementJson.Add(JObject.FromObject(new
+            {
+                media_type = "image",
+                url = image_url
+            }));
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    anonymous_id,
+                    conversation_id
+                },
+                message = new
+                {
+                    text = content,
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "media",
+                            elements = elementJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/message", param);
+
+            return result;
+        }
+
+        public JObject sendImageMessageToAnonyousByAttachmentId(string anonymous_id, string conversation_id, string content, string image_attachment_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            List<JObject> elementJson = new List<JObject>();
+            elementJson.Add(JObject.FromObject(new
+            {
+                media_type = "image",
+                attachment_id = image_attachment_id
+            }));
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    anonymous_id,
+                    conversation_id
+                },
+                message = new
+                {
+                    text = content,
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "media",
+                            elements = elementJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/message", param);
+
+            return result;
+        }
+
+        public JObject sendFileToAnonyous(string anonymous_id, string conversation_id, string file_attachment_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    anonymous_id,
+                    conversation_id
+                },
+                message = new
+                {
+                    attachment = new
+                    {
+                        type = "file",
+                        payload = new
+                        {
+                            token = file_attachment_id
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/message", param);
+
+            return result;
+        }
+
+        public JObject sendStickerMessageAnonyous(string anonymous_id, string conversation_id, string attachment_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            List<JObject> elementJson = new List<JObject>();
+            elementJson.Add(JObject.FromObject(new
+            {
+                media_type = "sticker",
+                attachment_id
+            }));
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    anonymous_id,
+                    conversation_id
+                },
+                message = new
+                {
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "media",
+                            elements = elementJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/message", param);
+
+            return result;
+        }
+
+        public JObject sendReactionToMessage(string user_id, string react_icon, string react_message_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    react_icon,
+                    react_message_id
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/message", param);
+
+            return result;
+        }
+
+        public JObject getQuotaCSMessageFree()
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/quota/message", param);
+
+            return result;
+        }
+
+        public JObject getQuotaCSMessageIn48h(string message_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            JObject body = JObject.FromObject(new
+            {
+                message_id
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/quota/message", param);
+
+            return result;
+        }
+
+        public JObject getQuotaPromotionMessage(string user_id)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+
+            JObject body = JObject.FromObject(new
+            {
+                user_id,
+                type = "promotion"
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v2.0/oa/quota/message", param);
+
+            return result;
+        }
+
+        public JObject sendTransactionMessagetoUserId(string user_id, string language, List<ElementV3> elements, List<ButtonV3> buttons, TransactionTemplateType template_type)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+            List<JObject> buttonsJson = JsonUtils.parseListButtonV3ToJson(buttons);
+            List<JObject> elementsJson = JsonUtils.parseListElementV3ToJson(elements);
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = template_type.getValue(),
+                            language,
+                            elements = elementsJson,
+                            buttons = buttonsJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/transaction", param);
+
+            return result;
+        }
+
+        public JObject sendPromotionMessagetoUserId(string user_id, string language, List<ElementV3> elements, List<ButtonV3> buttons)
+        {
+            JObject result = new JObject();
+            Dictionary<string, dynamic> param = new Dictionary<string, dynamic>();
+            List<JObject> buttonsJson = JsonUtils.parseListButtonV3ToJson(buttons);
+            List<JObject> elementsJson = JsonUtils.parseListElementV3ToJson(elements);
+            JObject body = JObject.FromObject(new
+            {
+                recipient = new
+                {
+                    user_id
+                },
+                message = new
+                {
+                    attachment = new
+                    {
+                        type = "template",
+                        payload = new
+                        {
+                            template_type = "promotion",
+                            language,
+                            elements = elementsJson,
+                            buttons = buttonsJson
+                        }
+                    }
+                }
+            });
+            param.Add("body", body.ToString());
+
+            result = excuteRequest("POST", "https://openapi.zalo.me/v3.0/oa/message/promotion", param);
+
+            return result;
+        }
+
+        //==========================Official Account API V3=====================================
     }
 }
